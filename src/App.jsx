@@ -105,12 +105,12 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-accent-50">
       {/* Mobile Menu Button */}
       <div className="lg:hidden fixed top-4 left-4 z-50">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="p-2 bg-white rounded-lg shadow-md"
+          className="p-2 bg-white rounded-lg shadow-md border border-accent-200"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -126,6 +126,7 @@ function App() {
           h-full
           bg-white
           shadow-lg lg:shadow-none
+          border-r border-accent-200
           z-40
           transition-transform duration-300 ease-in-out
         `}>
@@ -150,7 +151,7 @@ function App() {
       {/* Mobile Overlay */}
       {isMobileMenuOpen && (
         <div 
-          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
+          className="lg:hidden fixed inset-0 bg-primary-900 bg-opacity-30 z-30"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}

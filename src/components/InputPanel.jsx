@@ -104,10 +104,10 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
   }
 
   return (
-    <div className="h-full bg-white border-r border-gray-200 p-6 overflow-y-auto">
+    <div className="h-full bg-white border-r border-accent-200 p-6 overflow-y-auto">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-          AI Book Club Tutor
+        <h1 className="text-2xl font-bold text-primary-700 mb-2">
+          Meemli Book Club Tutor
         </h1>
         <p className="text-gray-600">
           Generate discussion questions for your book club
@@ -137,7 +137,7 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Upload Book (Optional)
           </label>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary-400 transition-colors">
+          <div className="border-2 border-dashed border-accent-300 rounded-lg p-6 text-center hover:border-primary-400 transition-colors bg-accent-50">
             <input
               ref={fileInputRef}
               type="file"
@@ -146,7 +146,7 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
               className="hidden"
             />
             <div className="space-y-2">
-              <Upload className="mx-auto h-12 w-12 text-gray-400" />
+              <Upload className="mx-auto h-12 w-12 text-accent-500" />
               <div className="text-sm text-gray-600">
                 <button
                   type="button"
@@ -163,23 +163,23 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
             </div>
           </div>
           
-          {uploadedFile && (
-            <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <FileText className="h-4 w-4 text-green-600" />
-                  <span className="text-sm text-green-800">{uploadedFile.name}</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={removeFile}
-                  className="text-red-600 hover:text-red-700 text-sm"
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
-          )}
+                     {uploadedFile && (
+             <div className="mt-3 p-3 bg-accent-50 border border-accent-200 rounded-lg">
+               <div className="flex items-center justify-between">
+                 <div className="flex items-center space-x-2">
+                   <FileText className="h-4 w-4 text-accent-600" />
+                   <span className="text-sm text-accent-800">{uploadedFile.name}</span>
+                 </div>
+                 <button
+                   type="button"
+                   onClick={removeFile}
+                   className="text-primary-600 hover:text-primary-700 text-sm"
+                 >
+                   Remove
+                 </button>
+               </div>
+             </div>
+           )}
         </div>
 
         {/* Chapters or Page Range */}
@@ -284,16 +284,16 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
         </div>
       </form>
 
-      {/* Instructions */}
-      <div className="mt-8 p-4 bg-blue-50 rounded-lg">
-        <h3 className="font-medium text-blue-900 mb-2">How to use:</h3>
-        <ul className="text-sm text-blue-800 space-y-1">
-          <li>• Enter a book name to generate general questions</li>
-          <li>• Upload a PDF/TXT file for content-specific questions</li>
-          <li>• Specify chapters or page ranges for focused discussion</li>
-          <li>• Choose a topic to target specific types of questions</li>
-        </ul>
-      </div>
+             {/* Instructions */}
+       <div className="mt-8 p-4 bg-secondary-50 rounded-lg border border-secondary-200">
+         <h3 className="font-medium text-secondary-900 mb-2">How to use:</h3>
+         <ul className="text-sm text-secondary-800 space-y-1">
+           <li>• Enter a book name to generate general questions</li>
+           <li>• Upload a PDF/TXT file for content-specific questions</li>
+           <li>• Specify chapters or page ranges for focused discussion</li>
+           <li>• Choose a topic to target specific types of questions</li>
+         </ul>
+       </div>
     </div>
   )
 }
