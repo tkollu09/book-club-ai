@@ -1,7 +1,7 @@
 {
-  "name": "book-club-ai",
+  "name": "Meemli-Book-Club-Tutor",
   "version": "1.0.0",
-  "description": "AI-powered book club tutor with split layout",
+  "description": "Meemli Book Club Tutor to generate discussion questions for your book club",
   "main": "index.js",
   "scripts": {
     "dev": "vite",

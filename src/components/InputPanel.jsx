@@ -43,24 +43,33 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
     const file = e.target.files[0]
     if (!file) return
 
-    setUploadedFile(file)
-    
-    if (file.type === 'text/plain') {
-      const text = await file.text()
-      setFileText(text)
-      setFormData(prev => ({
-        ...prev,
-        uploadedText: text
-      }))
-    } else if (file.type === 'application/pdf') {
-      // For PDF files, we'll extract text (simplified version)
-      // In a real app, you'd use a PDF parsing library
-      setFileText('PDF content extracted (simulated)')
-      setFormData(prev => ({
-        ...prev,
-        uploadedText: 'PDF content extracted (simulated)'
-      }))
-    }
+              // File size limit for single chapter (in bytes)
+     const MAX_FILE_SIZE = 25 * 1024 * 1024  // 25 MB for single chapter
+
+     // Check file size
+     if (file.size > MAX_FILE_SIZE) {
+       alert('File too large. Please upload a single chapter smaller than 25 MB.')
+       return
+     }
+
+     setUploadedFile(file)
+     
+     if (file.type === 'text/plain') {
+       const text = await file.text()
+       setFileText(text)
+       setFormData(prev => ({
+         ...prev,
+         uploadedText: text
+       }))
+     } else if (file.type === 'application/pdf') {
+       // For PDF files, we'll extract text (simplified version)
+       // In a real app, you'd use a PDF parsing library
+       setFileText('PDF content extracted (simulated)')
+       setFormData(prev => ({
+         ...prev,
+         uploadedText: 'PDF content extracted (simulated)'
+       }))
+     }
   }
 
   const handleSubmit = (e) => {
@@ -132,36 +141,36 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
           />
         </div>
 
-        {/* File Upload */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Upload Book (Optional)
-          </label>
-          <div className="border-2 border-dashed border-accent-300 rounded-lg p-6 text-center hover:border-primary-400 transition-colors bg-accent-50">
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept=".pdf,.txt"
-              onChange={handleFileUpload}
-              className="hidden"
-            />
-            <div className="space-y-2">
-              <Upload className="mx-auto h-12 w-12 text-accent-500" />
-              <div className="text-sm text-gray-600">
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="text-primary-600 hover:text-primary-700 font-medium"
-                >
-                  Click to upload
-                </button>
-                {' '}or drag and drop
-              </div>
-              <p className="text-xs text-gray-500">
-                PDF or TXT files up to 10MB
-              </p>
-            </div>
-          </div>
+                 {/* File Upload */}
+         <div>
+           <label className="block text-sm font-medium text-gray-700 mb-2">
+             Upload Single Chapter (Optional)
+           </label>
+           <div className="border-2 border-dashed border-accent-300 rounded-lg p-6 text-center hover:border-primary-400 transition-colors bg-accent-50">
+             <input
+               ref={fileInputRef}
+               type="file"
+               accept=".pdf,.txt"
+               onChange={handleFileUpload}
+               className="hidden"
+             />
+             <div className="space-y-2">
+               <Upload className="mx-auto h-12 w-12 text-accent-500" />
+               <div className="text-sm text-gray-600">
+                 <button
+                   type="button"
+                   onClick={() => fileInputRef.current?.click()}
+                   className="text-primary-600 hover:text-primary-700 font-medium"
+                 >
+                   Click to upload
+                 </button>
+                 {' '}or drag and drop
+               </div>
+               <p className="text-xs text-gray-500">
+                 PDF or TXT files up to 25MB (single chapter)
+               </p>
+             </div>
+           </div>
           
                      {uploadedFile && (
              <div className="mt-3 p-3 bg-accent-50 border border-accent-200 rounded-lg">
@@ -218,23 +227,25 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
           </select>
         </div>
 
-        {/* Custom Topic Input - Add this after the select */}
-        {showCustomTopic && (
-          <div>
-            <label htmlFor="customTopic" className="block text-sm font-medium text-gray-700 mb-2">
-              Specify Custom Topic
-            </label>
-            <input
-              type="text"
-              id="customTopic"
-              name="customTopic"
-              value={customTopic}
-              onChange={(e) => setCustomTopic(e.target.value)}
-              placeholder="Enter your custom topic..."
-              className="input-field"
-            />
-          </div>
-        )}
+                 {/* Custom Topic Input - Add this after the select */}
+         {showCustomTopic && (
+           <div>
+             <label htmlFor="customTopic" className="block text-sm font-medium text-gray-700 mb-2">
+               Specify Custom Topic
+             </label>
+             <input
+               type="text"
+               id="customTopic"
+               name="customTopic"
+               value={customTopic}
+               onChange={(e) => setCustomTopic(e.target.value)}
+               placeholder="Enter your custom topic..."
+               className="input-field"
+             />
+           </div>
+         )}
+
+         
 
         {/* Pasted Text */}
         <div>

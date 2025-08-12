@@ -24,4 +24,16 @@
   .card {
     @apply bg-white rounded-lg shadow-sm border border-accent-200 p-6;
   }
+  
+  .slider {
+    @apply bg-accent-200 rounded-lg appearance-none cursor-pointer;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    @apply appearance-none h-5 w-5 rounded-full bg-primary-500 cursor-pointer shadow-sm;
+  }
+  
+  .slider::-moz-range-thumb {
+    @apply appearance-none h-5 w-5 rounded-full bg-primary-500 cursor-pointer border-0 shadow-sm;
+  }
 } 
