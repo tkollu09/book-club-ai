@@ -52,21 +52,32 @@ export const callGeminiAPI = async (formData) => {
     const generatedText = data.candidates[0].content.parts[0].text;
     console.log('Raw API response:', generatedText) // Debug log
     
+    // Clean up the response - remove markdown code blocks
+    let cleanedText = generatedText
+      .replace(/```json\s*/g, '')  // Remove ```json
+      .replace(/```\s*/g, '')      // Remove ```
+      .trim();
+    
+    console.log('Cleaned text:', cleanedText) // Debug log
+    
     // Try to parse as JSON first
     try {
-      const questions = JSON.parse(generatedText);
+      const questions = JSON.parse(cleanedText);
       if (Array.isArray(questions)) {
         console.log('Parsed JSON questions:', questions) // Debug log
         return questions;
       }
     } catch (e) {
       console.log('JSON parsing failed, using text parsing') // Debug log
+      console.log('JSON parse error:', e.message) // Debug log
+      
       // If JSON parsing fails, split by newlines and clean up
-      const questions = generatedText
+      const questions = cleanedText
         .split('\n')
         .map(q => q.trim())
         .filter(q => q.length > 0 && !q.startsWith('[') && !q.startsWith(']'))
         .map(q => q.replace(/^\d+\.\s*/, '')) // Remove numbering
+        .map(q => q.replace(/^["']|["']$/g, '')) // Remove quotes from start/end
         .filter(q => q.length > 0);
       
       console.log('Parsed text questions:', questions) // Debug log

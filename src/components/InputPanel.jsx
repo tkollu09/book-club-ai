@@ -6,7 +6,9 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
     bookName: '',
     chapters: '',
     topic: 'All',
-    uploadedText: ''
+    uploadedText: '',
+    context: '',
+    numQuestions: 5
   })
   const [uploadedFile, setUploadedFile] = useState(null)
   const [fileText, setFileText] = useState('')
@@ -245,7 +247,47 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
            </div>
          )}
 
-         
+        {/* Context/Notes */}
+        <div>
+          <label htmlFor="context" className="block text-sm font-medium text-gray-700 mb-2">
+            Context or Additional Notes (Optional)
+          </label>
+          <textarea
+            id="context"
+            name="context"
+            value={formData.context}
+            onChange={handleInputChange}
+            placeholder="Add any context, background info, or specific discussion points you'd like to focus on..."
+            rows={3}
+            className="input-field resize-none"
+          />
+        </div>
+
+        {/* Number of Questions Slider */}
+        <div>
+          <label htmlFor="numQuestions" className="block text-sm font-medium text-gray-700 mb-2">
+            Number of Questions: {formData.numQuestions}
+          </label>
+          <input
+            type="range"
+            id="numQuestions"
+            name="numQuestions"
+            min="1"
+            max="10"
+            value={formData.numQuestions}
+            onChange={handleInputChange}
+            className="slider w-full h-2 bg-accent-200 rounded-lg appearance-none cursor-pointer"
+          />
+          <div className="relative mt-1">
+            <div className="flex justify-between text-xs text-gray-500">
+              <span>1</span>
+              <span>10</span>
+            </div>
+            <div className="absolute inset-x-0 top-0 flex justify-center">
+              <span className="text-xs text-gray-500 -ml-20 -mr-5">5</span>
+            </div>
+          </div>
+        </div>
 
         {/* Pasted Text */}
         <div>
