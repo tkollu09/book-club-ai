@@ -118,7 +118,7 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
     <div className="h-full bg-white border-r border-accent-200 p-6 overflow-y-auto">
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-primary-700 mb-2">
-          Meemli Book Club Tutor
+          Meemli Book Club Guide
         </h1>
         <p className="text-gray-600">
           Generate discussion questions for your book club
