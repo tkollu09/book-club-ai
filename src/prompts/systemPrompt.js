@@ -39,7 +39,7 @@ export const generateUserPrompt = (formData) => {
   let prompt = `Generate ${numQuestions} discussion questions for "${bookName}"`;
   
   if (chapters) {
-    prompt += ` focusing on ${chapters}`;
+    prompt += `specifically focusing on ${chapters}`;
   }
   
   if (topic && topic !== 'All') {
@@ -54,7 +54,7 @@ export const generateUserPrompt = (formData) => {
     prompt += `\n\nBased on this text content:\n${uploadedText}`;
   }
   
-  prompt += `\n\nPlease provide exactly ${numQuestions} thoughtful, open-ended questions that will encourage deep discussion.`;
+  prompt += `\n\nPlease provide exactly ${numQuestions} thoughtful, open-ended questions that will encourage deep discussion. Include general questions and questions tailored to the page range, topic, and context`;
   
   return prompt;
 }; 

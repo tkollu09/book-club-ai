@@ -193,10 +193,10 @@ const InputPanel = ({ onGenerateQuestions, onRegenerateQuestions, isLoading }) =
            )}
         </div>
 
-        {/* Chapters or Page Range */}
+        {/* Chapters */}
         <div>
           <label htmlFor="chapters" className="block text-sm font-medium text-gray-700 mb-2">
-            Chapters or Page Range (Optional)
+            Chapters (Optional)
           </label>
           <input
             type="text"
