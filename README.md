@@ -54,8 +54,3 @@ A modern web application that generates AI-powered discussion questions for book
 - **All**: Mixed questions covering all aspects
 
 
-- [ ] Export to PDF/Word documents
-- [ ] Collaborative features for book clubs
-- [ ] Advanced PDF parsing with better text extraction
-- [ ] Question difficulty levels
-- [ ] Multi-language support 
